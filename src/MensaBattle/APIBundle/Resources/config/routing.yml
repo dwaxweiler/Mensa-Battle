@@ -1,0 +1,348 @@
+person_photo_post:
+    pattern:  /photo
+    defaults: { _controller: "MensaBattleAPIBundle:Album:createPhoto", _format: json }
+    requirements:
+        _method: POST
+        
+person_photo_get:
+    pattern:  /photo/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Album:getPhoto", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+        
+person_photo_delete:
+    pattern:  /photo/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Album:deletePhoto", _format: json }
+    requirements:
+        _method: DELETE
+        id:      \d+
+        
+#battle_post:
+#    pattern:  /battle
+#    defaults: { _controller: "MensaBattleAPIBundle:Battle:create", _format: json }
+#    requirements:
+#        _method: POST
+
+battle_get:
+    pattern:  /battle/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Battle:get", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+battle_get_running:
+    pattern:  /battles/running
+    defaults: { _controller: "MensaBattleAPIBundle:Battle:getRunning", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+battle_get_past:
+    pattern:  /battles/past
+    defaults: { _controller: "MensaBattleAPIBundle:Battle:getPast", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+battle_get_all:
+    pattern:  /battles
+    defaults: { _controller: "MensaBattleAPIBundle:Battle:getAll", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+
+battle_participation_post:
+    pattern:  /battle/{id}/participation
+    defaults: { _controller: "MensaBattleAPIBundle:Battle:createParticipation", _format: json }
+    requirements:
+        _method: POST
+        id:      \d+
+        
+battle_participation_get:
+    pattern:  /battle/participation/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Battle:getParticipation", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+battle_participation_get_all:
+    pattern:  /battle/{id}/participations
+    defaults: { _controller: "MensaBattleAPIBundle:Battle:getParticipations", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+battle_participation_delete:
+    pattern:  /battle/{bid}/participation/{pid}
+    defaults: { _controller: "MensaBattleAPIBundle:Battle:deleteParticipation", _format: json }
+    requirements:
+        _method: DELETE
+        bid:     \d+
+        pid:     \d+
+
+example_report_post:
+    pattern:  /example/{id}/report
+    defaults: { _controller: "MensaBattleAPIBundle:Example:createReport", _format: json }
+    requirements:
+        _method: POST
+        id:      \d+
+        
+#example_report_get:
+#    pattern:  /example/report/{id}
+#    defaults: { _controller: "MensaBattleAPIBundle:Example:getReport", _format: json }
+#    requirements:
+#        _format: json
+#        _method: GET
+#        id:      \d+
+        
+#example_report_get_all:
+#    pattern:  /example/reports
+#    defaults: { _controller: "MensaBattleAPIBundle:Example:getReports", _format: json }
+#    requirements:
+#        _format: json
+#        _method: GET
+        
+mensa_get:
+    pattern:  /mensa/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Mensa:get", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+        
+mensa_get_all:
+    pattern:  /mensas
+    defaults: { _controller: "MensaBattleAPIBundle:Mensa:getAll", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+
+mensa_menu_get_from_date:
+    pattern:  /mensa/{id}/menu/{year}/{month}/{day}
+    defaults: { _controller: "MensaBattleAPIBundle:Mensa:getMenusFromDate", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+        year:    \d+
+        month:   \d+
+        day:     \d+
+
+mensa_menu_get_next:
+    pattern:  /mensa/{id}/menus/next
+    defaults: { _controller: "MensaBattleAPIBundle:Mensa:getNextMenus", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+mensa_menu_get_past:
+    pattern:  /mensa/{id}/menus/past
+    defaults: { _controller: "MensaBattleAPIBundle:Mensa:getPastMenus", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+mensa_menu_get_all:
+    pattern:  /mensa/{id}/menus
+    defaults: { _controller: "MensaBattleAPIBundle:Mensa:getMenus", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+menu_get:
+    pattern:  /menu/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:DailyMenu:get", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+menu_meals_get_all:
+    pattern:  /menu/{id}/meals
+    defaults: { _controller: "MensaBattleAPIBundle:DailyMenu:getMeals", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+meal_get:
+    pattern:  /meal/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Meal:get", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+       
+meal_rating_post:
+    pattern:  /meal/{id}/rating
+    defaults: { _controller: "MensaBattleAPIBundle:Meal:createRating", _format: json }
+    requirements:
+        _method: POST
+        id:      \d+
+       
+meal_rating_get:
+    pattern:  /meal/rating/{rid}
+    defaults: { _controller: "MensaBattleAPIBundle:Meal:getRating", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        rid:     \d+
+        
+meal_ratings_get_all:
+    pattern:  /meal/{id}/ratings
+    defaults: { _controller: "MensaBattleAPIBundle:Meal:getRatings", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+        
+meal_example_post:
+    pattern:  /meal/{id}/example
+    defaults: { _controller: "MensaBattleAPIBundle:Meal:createExample", _format: json }
+    requirements:
+        _method: POST
+        id:      \d+
+        
+meal_example_get:
+    pattern:  /meal/example/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Meal:getExample", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+meal_example_get_all:
+    pattern:  /meal/{id}/examples
+    defaults: { _controller: "MensaBattleAPIBundle:Meal:getExamples", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+        
+meal_example_delete:
+    pattern:  /meal/{mid}/example/{eid}
+    defaults: { _controller: "MensaBattleAPIBundle:Meal:deleteExample", _format: json }
+    requirements:
+        _method: DELETE
+        mid:     \d+
+        eid:     \d+
+        
+parse:
+    pattern:  /parse
+    defaults: { _controller: "MensaBattleAPIBundle:Parser:parse" }
+    requirements:
+        id:      \d+
+
+participation_comment_post:
+    pattern:  /participation/{id}/comment
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:createComment", _format: json }
+    requirements:
+        _method: POST
+        id:      \d+
+
+participation_comment_get:
+    pattern:  /participation/comment/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:getComment", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:     \d+
+        
+participation_comment_get_all:
+    pattern:  /participation/{id}/comments
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:getComments", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+        
+participation_comment_delete:
+    pattern:  /participation/{pid}/comment/{cid}
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:deleteComment", _format: json }
+    requirements:
+        _method: DELETE
+        cid:     \d+
+        pid:     \d+
+        
+participation_like_post:
+    pattern:  /participation/{id}/like
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:createLike", _format: json }
+    requirements:
+        _method: POST
+        id:      \d+
+
+participation_like_get:
+    pattern:  /participation/like/{lid}
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:getLike", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+
+participation_like_get_all:
+    pattern:  /participation/{id}/likes
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:getLikes", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        id:      \d+
+        
+participation_like_delete:
+    pattern:  /participation/{pid}/like/{lid}
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:deleteLike", _format: json }
+    requirements:
+        _method: DELETE
+        pid:     \d+
+        lid:     \d+
+        
+participation_report_post:
+    pattern:  /participation/{id}/report
+    defaults: { _controller: "MensaBattleAPIBundle:Participation:createReport", _format: json }
+    requirements:
+        _method: POST
+        id:      \d+
+        
+#participation_report_get:
+#    pattern:  /participation/report/{id}
+#    defaults: { _controller: "MensaBattleAPIBundle:Participation:getReport", _format: json }
+#    requirements:
+#        _format: json
+#        _method: GET
+#        id:     \d+
+        
+#participation_report_get_all:
+#    pattern:  /participation/reports
+#    defaults: { _controller: "MensaBattleAPIBundle:Participation:getReports", _format: json }
+#    requirements:
+#        _format: json
+#        _method: GET
+        
+person_post:
+    pattern:  /person
+    defaults: { _controller: "MensaBattleAPIBundle:Person:create", _format: json }
+    requirements:
+        _method: POST
+        
+person_get:
+    pattern:  /person/{id}
+    defaults: { _controller: "MensaBattleAPIBundle:Person:get", _format: json }
+    requirements:
+        _format: json
+        _method: GET
+        
+person_get_all:
+    pattern:  /persons
+    defaults: { _controller: "MensaBattleAPIBundle:Person:getAll", _format: json }
+    requirements:
+        _format: json
+        _method: GET

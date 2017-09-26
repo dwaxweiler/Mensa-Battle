@@ -1,0 +1,10 @@
+﻿/app/bootstrap*
+/app/cache/*
+/app/config/parameters.yml
+/app/logs/*
+/vendor/
+/web/bundles/
+/web/photos/
+.travis.yml
+composer.lock
+composer.phar

@@ -1,0 +1,13 @@
+parameters:
+    facebook_user_provider.class: MensaBattle\FacebookAppBundle\Security\User\FacebookProvider
+
+services:
+    facebook_user_provider:
+        class: "%facebook_user_provider.class%"
+        arguments:
+            facebook: "@fos_facebook.api"
+            entityManager: "@doctrine.orm.entity_manager"
+            validator: "@validator"
+            logger: "@logger"
+        tags:
+            - { name: monolog.logger, channel: facebook_user_provider }

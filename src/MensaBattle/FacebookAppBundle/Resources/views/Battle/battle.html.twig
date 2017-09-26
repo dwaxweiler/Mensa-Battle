@@ -1,0 +1,14 @@
+{% extends 'MensaBattleFacebookAppBundle::base.html.twig' %}
+
+{% block body %}
+<h1>{{ battle.title }}</h1>
+{{ battle.description }}
+<br><img alt="date" src="{{ asset('bundles/mensabattlefacebookapp/images/date.png') }}"> {{ battle.startTime|date('d.m.Y') }} - {{ battle.endTime|date('d.m.Y') }}
+<br>Participation <img alt="winner score" src="{{ asset('bundles/mensabattlefacebookapp/images/asterisk_orange.png') }}"> {{ battle.participationScore }}
+<br>Winning <img alt="winner score" src="{{ asset('bundles/mensabattlefacebookapp/images/asterisk_orange.png') }}"> {{ battle.trophy.score }}
+<br><img alt="participations" src="{{ asset('bundles/mensabattlefacebookapp/images/images.png') }}"> {{ battle.getNumberParticipations }}
+<br>
+{% for p in battle.participations %}
+<img alt="participation" src="{{ p.photo.filePath }}"> 
+{% endfor %}
+{% endblock %}

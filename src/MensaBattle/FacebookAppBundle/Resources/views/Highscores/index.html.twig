@@ -1,0 +1,17 @@
+{% extends 'MensaBattleFacebookAppBundle::base.html.twig' %}
+
+{% block body %}
+<a href="{{ path('facebook_app_highscores', {'type': 'week'}) }}">Last week</a> - 
+<a href="{{ path('facebook_app_highscores', {'type': 'month'}) }}">Last month</a> - 
+<a href="{{ path('facebook_app_highscores', {'type': 'total'}) }}">Total</a>
+{% if persons %}
+<table>
+    {% for person in persons %}
+    <tr>
+        <td><a href="{{ path('facebook_app_profile_by_id', {'id': person.id}) }}">{{ person.name }}</a></td>
+        <td>{{ person.score }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+mensa_battle_facebook_app:
+    resource: "@MensaBattleFacebookAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mensa_battle_api:
+    resource: "@MensaBattleAPIBundle/Resources/config/routing.yml"
+    prefix:   /api
+    
+# Internal routing configuration to handle ESI
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal

@@ -1,0 +1,22 @@
+{% extends 'MensaBattleFacebookAppBundle::base.html.twig' %}
+
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('facebook_app_battle_new') }}">Add new battle</a>
+{% endif %}
+{% if battles %}
+<ul>
+    {% for battle in battles %}
+    <li>
+        <a class="box" href="{{ path('facebook_app_battle', {'id': battle.id}) }}"><b>{{ battle.title }}</b>
+        <ul>
+            <li><img alt="date" src="{{ asset('bundles/mensabattlefacebookapp/images/date.png') }}"> {{ battle.endTime|date('d.m.Y') }}</li>
+            <li><img alt="participations" src="{{ asset('bundles/mensabattlefacebookapp/images/images.png') }}"> {{ battle.getNumberParticipations }}</li>
+            <li><img alt="winner score" src="{{ asset('bundles/mensabattlefacebookapp/images/asterisk_orange.png') }}"> {{ battle.trophy.score }}</li>
+        </ul>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

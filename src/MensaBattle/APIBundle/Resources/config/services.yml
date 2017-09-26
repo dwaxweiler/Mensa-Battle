@@ -1,0 +1,15 @@
+parameters:
+    facebook_connector.class: MensaBattle\APIBundle\Service\FacebookConnector
+    facebook_connector.appId: 558488737514471
+    facebook_connector.secret: c3e5a940b7a4659f6e54f9b03600dc6e
+    parser1.class: MensaBattle\APIBundle\Service\Parser1
+
+services:
+    facebook_connector:
+        class: "%facebook_connector.class%"
+        arguments: ["%facebook_connector.appId%", "%facebook_connector.secret%"]
+    parser1:
+        class: "%parser1.class%"
+        arguments: ["@doctrine.orm.entity_manager", "@logger"]
+        tags:
+            - { name: monolog.logger, channel: parser }

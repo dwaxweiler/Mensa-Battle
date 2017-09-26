@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Mensa Battle Facebook App</title>
+        {% block stylesheets %}
+            {% stylesheets 'bundles/mensabattlefacebookapp/css/*' filter='cssrewrite' %}
+                <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
+        <script>
+            function goLogIn(){
+                window.location.href = "{{ path('_security_check') }}";
+            }
+    
+            function onFbInit() {
+                if (typeof(FB) != 'undefined' && FB != null ) {            
+                    FB.Event.subscribe('auth.statusChange', function(response) {
+                        if (response.session || response.authResponse) {
+                            setTimeout(goLogIn, 500);
+                        } else {
+                            window.location.href = "{{ path('_security_logout') }}";
+                        }
+                    });
+                }
+            }
+        </script>
+        <div id="wrapper">
+            <header>
+                Mensa Battle
+            </header>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('facebook_app_battles') }}">Wettkämpfe</a></li>
+                    <li><a href="{{ path('facebook_app_menus') }}">Speiseplan</a></li>
+                    <li><a href="{{ path('facebook_app_profile') }}">Mein Profil</a></li>
+                    <li><a href="{{ path('facebook_app_highscores') }}">Highscores</a></li>
+                </ul>
+            </nav>
+            <div id="content">
+                {% block body %}{%  endblock %}
+            </div>
+            <footer>
+                © 2013 Mensa Battle
+            </footer>
+        </div>
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>

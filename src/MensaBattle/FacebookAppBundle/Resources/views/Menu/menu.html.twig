@@ -1,0 +1,27 @@
+{% extends 'MensaBattleFacebookAppBundle::base.html.twig' %}
+
+{% block body %}
+<h1>{{ menu.name }}</h1>
+{{ menu.meal.title }} {{ menu.meal.description }}
+<br>For students: {{ menu.priceStudent }}€
+<br>For staff: {{ menu.priceStaff }}€
+<br>For visitors: {{ menu.priceVistor }}€
+<br>
+{% for i in 0..(menu.meal.calculateAverageRating|number_format-1) if menu.meal.calculateAverageRating > 0 %}
+<img alt="star" src="{{ asset('bundles/mensabattlefacebookapp/images/star.png') }}">
+{% endfor %}
+{% for i in menu.meal.calculateAverageRating|number_format..4 if menu.meal.calculateAverageRating < 5 %}
+<img alt="grey star" src="{{ asset('bundles/mensabattlefacebookapp/images/star_grey.png') }}">
+{% endfor %} ({{ menu.meal.getNumberRatings }})
+<br><img alt="example photos" src="{{ asset('bundles/mensabattlefacebookapp/images/images.png') }}"> {{ menu.meal.getNumberExamples }}
+<br>
+{% for p in menu.meal.examples %}
+<img alt="participation" src="{{ p.photo.filePath }}"> 
+{% endfor %}
+{% if is_granted('ROLE_USER') %}
+<form action="{{ path('facebook_app_menu', { 'id': menu.id }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'MensaBattleFacebookAppBundle::base.html.twig' %}
+
+{% block body %}
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+{{ facebook_login_button({'autologoutlink': true}) }}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'MensaBattleFacebookAppBundle::base.html.twig' %}
+
+{% block body %}
+<h1><a href="{{ path('facebook_app_menus_by_date',
+{ 'year': previousDate|date('Y'), 'month': previousDate|date('m'), 'day': previousDate|date('d') }
+) }}"><-</a> {{ date|date('d.m.Y') }} <a href="{{ path('facebook_app_menus_by_date',
+{ 'year': nextDate|date('Y'), 'month': nextDate|date('m'), 'day': nextDate|date('d') }
+) }}">-></a></h1>
+{% if menus %}
+<ul>
+    {% for menu in menus %}
+    <li>
+        <a class="box" href="{{ path('facebook_app_menu', {'id': menu.id}) }}"><b>{{ menu.name }}</b>
+        <br>{{ menu.meal.title }} {{ menu.meal.description }}
+        <ul>
+            <li>
+                {% for i in 0..(menu.meal.calculateAverageRating|number_format-1) if menu.meal.calculateAverageRating > 0 %}
+                <img alt="star" src="{{ asset('bundles/mensabattlefacebookapp/images/star.png') }}">
+                {% endfor %}
+                {% for i in menu.meal.calculateAverageRating|number_format..4 if menu.meal.calculateAverageRating < 5 %}
+                <img alt="grey star" src="{{ asset('bundles/mensabattlefacebookapp/images/star_grey.png') }}">
+                {% endfor %}
+            </li>
+            <li><img alt="images" src="{{ asset('bundles/mensabattlefacebookapp/images/images.png') }}"> {{ menu.meal.getNumberExamples }}</li>
+            <li><img alt="euro" src="{{ asset('bundles/mensabattlefacebookapp/images/euro.png') }}"> {{ menu.priceStudent }} - {{ menu.getPriceVistor }} </li>
+        </ul>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+There are is no menu.
+{% endif %}
+{% endblock %}

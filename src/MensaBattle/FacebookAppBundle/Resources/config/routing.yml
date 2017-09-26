@@ -1,0 +1,59 @@
+facebook_app_splash:
+    pattern:  /
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Splash:show" }
+
+facebook_app_battle:
+    pattern:  /battle/{id}
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Battle:show" }
+    requirements:
+        id:      \d+
+
+facebook_app_battle_new:
+    pattern:  /battle/new
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Battle:new" }
+
+facebook_app_battles:
+    pattern:  /battles
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Battle:index" }
+
+facebook_app_menu:
+    pattern:  /menu/{id}
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Menu:show" }
+    requirements:
+        id:      \d+
+
+facebook_app_menus:
+    pattern:  /menus
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Menu:index" }
+
+facebook_app_menus_by_date:
+    pattern:  /menus/{year}/{month}/{day}
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Menu:byDate" }
+    requirements:
+        year:  \d+
+        month: \d+
+        day:   \d+
+
+facebook_app_profile:
+    pattern:  /profile
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Profile:show" }
+
+facebook_app_profile_by_id:
+    pattern:  /profile/{id}
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Profile:byId" }
+    requirements:
+        id:      \d+
+    
+facebook_app_highscores:
+    pattern:  /highscores/{type}
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Highscores:index", type: week }
+    requirements:
+        type: week|month|total
+
+_security_check:
+    pattern: /login_check
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Splash:check" }
+    
+_security_logout:
+    pattern: /logout
+    defaults: { _controller: "MensaBattleFacebookAppBundle:Splash:logout" }

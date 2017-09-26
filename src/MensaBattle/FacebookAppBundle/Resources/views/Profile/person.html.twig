@@ -1,0 +1,15 @@
+{% extends 'MensaBattleFacebookAppBundle::base.html.twig' %}
+
+{% block body %}
+<h1>{{ person.name }}</h1>
+<img alt="points" src="{{ asset('bundles/mensabattlefacebookapp/images/asterisk_orange.png') }}"> {{ score }}
+<br>Dabei seit: {{ person.joinedTime|date('d.m.Y') }}
+{% if person.getNumberTrophies > 0 %}
+<br>Trophäen:
+<ul>
+{% for trophy in person.trophies %}
+    <li>{{ trophy.title }} (erhalten: {{ trophy.receivedTime|date('d.m.Y') }})</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

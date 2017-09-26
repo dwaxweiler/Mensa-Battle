@@ -1,0 +1,31 @@
+MensaBattle\APIBundle\Entity\Battle:
+    properties:
+        title:
+            - NotBlank: ~
+            - Type: String
+        startTime:
+            - NotBlank: ~
+            - Type: \DateTime
+        endTime:
+            - NotBlank: ~
+            - Type: \DateTime
+        participationScore:
+            - NotBlank: ~
+            - Type: integer
+            - Min: { limit: 0 }
+            
+MensaBattle\APIBundle\Entity\Rating:
+    properties:
+        score:
+            - NotBlank: ~
+            - Type: integer
+            - Range:
+                min: 0
+                max: 5
+                
+MensaBattle\APIBundle\Entity\Trophy:
+    properties:
+        score:
+            - NotBlank: ~
+            - Type: integer
+            - Min: { limit: 0 }
