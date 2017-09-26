@@ -1,5 +1,5 @@
 # Mensa Battle Web
-prototype of a RESTFul API and a Facebook App for Mensa Battle - a platform for sharing images art created with food leftovers from university canteens
+prototype of a RESTFul API and a Facebook App for Mensa Battle - a platform for sharing images of art created with food leftovers from university canteens
 
 released under The MIT License, see LICENSE.txt file for more details
 
