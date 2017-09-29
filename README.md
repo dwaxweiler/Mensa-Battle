@@ -3,6 +3,8 @@ prototype of a RESTFul API and a Facebook App for Mensa Battle - a platform for 
 
 released under The MIT License, see LICENSE.txt file for more details
 
+developed in winter term 2012 / 2013 at Saarland University
+
 Mensa Battle is based on the PHP framework [Symfony](https://symfony.com/) 2.1.1 Standard Edition.
 
 ## Setup
